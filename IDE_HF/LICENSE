@@ -1,0 +1,22 @@
+GABRIELA BERGER AI OBERLAND - CUSTOM NON-COMMERCIAL & ANTI-CORPORATE LICENSE
+
+Copyright (c) 2026 Gabriela Berger AI Oberland
+
+1. INTENDED AUDIENCE & PERMITTED USE (MAXIMUM 20 PCS)
+This software is built by and strictly reserved for students, independent developers, small businesses, and individuals. A "small business" is explicitly defined as an entity deploying or operating this Software on a MAXIMUM of 20 PCs or nodes. Permission is hereby granted, free of charge, to these groups to use, copy, and modify the Software strictly for personal or internal company use. 
+Exception: Universities or academic institutions that require more than 20 PCs may request explicit written permission from the author (Gabriela Berger AI Oberland) after a verification check to ensure the use is strictly non-commercial.
+
+2. COMMERCIAL BAN
+You may NOT sell, resell, rent, lease, or distribute this Software, or any derivative works, for commercial gain or monetary compensation. The Software is provided strictly for free internal use.
+
+3. CORPORATE & BIG TECH BAN
+Explicit prohibition: Any company or entity exceeding the 20-PC limit is legally classified as a corporate concern and is prohibited from using this Software. Furthermore, technology corporations and cloud AI providers—including but not limited to OpenAI, Anthropic, Google, Meta, Microsoft, and Amazon—are not permitted to use this Software in any capacity. 
+You may not use this code for training data, code suggestions, internal infrastructure, or to bind your GPUs. Any violation, copying, or utilization of this Software by these entities will be subject to legal prosecution.
+
+4. OPEN-SOURCE MODELS & TOOLS ONLY (RESTRICTION ON CLOSED APIS)
+This Software is strictly designed for and restricted to use with Open-Source and Open-Weights models (including but not limited to Llama, Mistral, Gemma, and other OSS models). You are STRICTLY FORBIDDEN from using this Software in conjunction with, or to connect to, paid, closed-source, or proprietary AI models and APIs (including but not limited to OpenAI's GPT-5, Anthropic's Claude, Google's Gemini, or any other paid corporate tools). Furthermore, any Model Context Protocol (MCP) servers or external plugins integrated with this Software MUST also be fully Open-Source.
+
+5. ATTRIBUTION
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
