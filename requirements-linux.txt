@@ -1,0 +1,45 @@
+# Astraeus IDE — Linux venv (Ubuntu, offline ROCm box)
+#
+# Python packages are identical to requirements.txt — Tk and sqlite3
+# come from the system Python on Linux, not pip.
+#
+# Setup on the offline PC:
+#
+#   # one-time system packages (needs internet OR an apt offline mirror):
+#   sudo apt install python3.12 python3.12-venv python3-tk
+#
+#   # create venv at the location open_IDE expects (e.g. next to the IDE folder):
+#   cd ../Agents
+#   python3.12 -m venv venv
+#   source venv/bin/activate
+#   pip install --upgrade pip
+#   pip install -r ../IDE/requirements-linux.txt
+#
+#   # then launch the IDE:
+#   cd ../IDE && python3 main_window.py
+#
+# For a fully offline install, run `pip download -r requirements-linux.txt -d wheels/`
+# on a connected machine, copy the wheels/ folder over, and use
+# `pip install --no-index --find-links wheels/ -r requirements-linux.txt`.
+
+requests==2.33.1
+jinja2==3.1.6
+sounddevice==0.5.5
+faster-whisper
+piper-tts
+numpy
+beautifulsoup4
+googlesearch-python
+mcp
+python-dateutil
+Pillow
+PyMuPDF
+pyautogui
+cairosvg
+
+# Transitive deps (pinned for offline reproducibility)
+certifi==2026.4.22
+charset-normalizer==3.4.7
+idna==3.13
+MarkupSafe==3.0.3
+urllib3==2.6.3
