@@ -1,0 +1,21 @@
+# PAR: Personal Augmentation Retrieval - Dependencies
+
+# Core dependencies
+python>=3.10
+
+# For Hugging Face integration (optional)
+transformers>=4.37.0
+sentencepiece>=0.1.99
+accelerate>=0.25.0
+torch>=2.0.0
+
+# For web interface (optional)
+gradio>=4.0
+requests>=2.31.0
+
+# For advanced features
+numpy>=1.24.0
+pandas>=2.0.0
+
+# For testing
+pytest>=7.4.0

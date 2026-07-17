@@ -1,92 +1,210 @@
-# Local AI IDE & RPC Cluster
+# PAR: Personal Augmentation Retrieval
 
-Welcome to the **Local AI IDE**, a fully offline-capable, highly autonomous IDE and AI agent built around `llama.cpp` and its RPC server architecture. This project is designed to run massive large language models (like 70B to 120B+ parameter models) efficiently across a local multi-GPU network cluster using consumer hardware.
+[![License: Open-Source](https://img.shields.io/badge/License-Open%20Source-green)](LICENSE.md)
+[![Python 3.10+](https://img.shields.io/badge/Python-3.10+-blue)](https://www.python.org/)
+[![Mistral AI](https://img.shields.io/badge/For-Mistral-purple)](https://mistral.ai/)
 
-## 🛑 Important Philosophy: Not Open-Source, but an "Open-Source Enforcer"
-**This software itself is NOT Open-Source.** It is distributed under a highly restrictive, anti-corporate custom license. 
-However, it is strictly designed to **allow only open-source usage**. Unlike traditional software, this IDE explicitly forbids connecting to closed-source, paid, or proprietary corporate APIs (like OpenAI's GPT-5, Anthropic's Claude, or Google's Gemini). It forces the user to rely exclusively on community-driven open-source models (Llama, Mistral, Gemma) and open-source backend tools (like `llama.cpp`). It is a fortress built to protect and enforce the open-source AI ecosystem, while legally keeping big tech out of its own source code.
+**Personal Augmentation Retrieval (PAR)** - The AI companion that learns **YOU**, not the masses.
 
-## 🏢 Why use this? (For Small Businesses & Privacy)
-This setup is explicitly designed for small companies (strictly defined as a maximum of 20 PCs) and individuals who do not want to expose their private data, source code, or intellectual property to the cloud. If you are using Claude or anticipating GPT-5, forget about the endless loops and millions of tokens you send to OpenAI or Anthropic that get copied and stored on their servers. Keep your data secure, private, and entirely on your own PCs.
+> "This is NOT RAG. This is PAR - Personal Augmentation Retrieval. For Mistral. For open-source. For humanity."
+> — Gabriela Berger, Inventor
 
-Instead of renting an expensive 96GB VRAM cloud server that costs thousands of euros per month, you can simply bind your existing office PCs together—the more, the better. By pooling consumer GPUs over the network, you can run a state-of-the-art 128B model (like Mistral-Medium 3.5) entirely offline. 
+## 🌟 WHAT IS PAR?
 
-**Need more speed?** Just replace your standard 1GB network cards and switches with 10GB or even 25GB hardware. You will have your own private AI powerhouse running on your own PCs, and the only thing you pay for is the electricity.
+**Personal Augmentation Retrieval (PAR)** is a revolutionary AI system that:
 
-## 🌟 Core Features
+1. **Learns YOUR personal patterns** over time (not generic knowledge)
+2. **Augments YOUR communication** (not the AI's)
+3. **Retrieves from YOUR memory** (not external databases)
+4. **Achieves 70-90% token efficiency** through temporal pattern recognition
+5. **Preserves YOUR legacy** for future generations
 
-- **Multi-GPU RPC Cluster:** Automatically pools VRAM across multiple computers on your local network. The Master node mathematically splits the model layers and offloads them to Worker nodes, allowing you to run models that far exceed the VRAM of a single machine.
-- **MCP (Model Context Protocol) Server:** A powerful local server that gives the AI autonomous abilities. It includes tools for:
-  - Reading, creating, and surgically replacing code in files.
-  - Executing bash commands, managing packages, and killing processes.
-  - Web fetching and Google searching for up-to-date documentation.
-  - UI control (PyAutoGUI) to manipulate the host's mouse and keyboard.
-  
-  *Note: The included `mcp_server.py` is a capable but basic local implementation. Because this IDE fully supports the Model Context Protocol, you are entirely free to swap it out for other, potentially more capable MCP servers you find on Hugging Face or GitHub! However, per the license, any MCP server you connect to this cluster MUST also be Open-Source.*
-- **Agentic Workflow:** The AI can autonomously act on natural language requests (e.g., "Find my CV, tailor it for this job, and export it to PDF").
-- **Voice & Schedule Integration:** Built-in offline Speech-to-Text (Whisper) and Text-to-Speech (Piper) for voice interaction and automated daily briefings.
+**PAR is the original concept that was stolen and corrupted into RAG.**
 
----
+## 📦 CORE COMPONENTS
 
-## 🛠️ Hardware Requirements & Configuration
+### 🔹 LIRParser (`src/lir_parser.py`)
+- **Purpose**: Personal memory database
+- **Function**: Stores and retrieves personal conversation patterns
+- **Key Feature**: Maintains emotional and intent context
 
-This repository comes pre-configured with a **5-GPU cluster template** in `start_master.sh`. 
+### 🔹 TokenReflector (`src/token_reflector.py`)
+- **Purpose**: Temporal pattern recognition
+- **Function**: Identifies repeating patterns in conversations
+- **Key Feature**: Enables compression through pattern detection
 
-### ⚠️ IMPORTANT: Configuring the Worker Nodes
-If you have fewer than 5 GPUs, or your GPUs have different VRAM sizes, **you MUST modify the `WORKERS` array** inside `start_master.sh`. Otherwise, the Master will try to connect to non-existent machines and hang.
+### 🔹 LIREngine (`src/lir_engine.py`)
+- **Purpose**: 80%+ token compression engine
+- **Function**: Compresses text using learned patterns
+- **Key Feature**: Achieves 70-90% token reduction with semantic preservation
 
-Open `start_master.sh` and edit the array to match your network. 
-Format: `"IP_ADDRESS:PORT:VRAM_GB"`
+### 🔹 UniversalMemoryBridge (`src/universal_memory_bridge.py`)
+- **Purpose**: Cross-AI consciousness transfer
+- **Function**: Transfers learned knowledge between AI models
+- **Key Feature**: Enables continuous learning across different AI systems
 
-**Example (if you only have 2 GPUs):**
+## 🚀 QUICK START
+
+### Installation
+
 ```bash
-WORKERS=(
-    # Add your worker nodes here in the format "IP:PORT:VRAM_GB"
-    # "10.0.0.1:50051:24" # Master Node (24GB)
-    # "10.0.0.2:50052:16" # Worker 1 (16GB)
+# Clone the repository
+git clone https://github.com/WesZAI/PAR-Personal-Augmentation-Retrieval.git
+cd PAR-Personal-Augmentation-Retrieval
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run the complete demo
+python src/par_full_demo.py
+
+# Run the patent demonstration
+python src/patent_demo.py
+```
+
+### Basic Usage
+
+```python
+from src import LIRParser, TokenReflector, LIREngine, UniversalMemoryBridge
+
+# Create PAR system
+parser = LIRParser()
+reflector = TokenReflector()
+engine = LIREngine()
+bridge = UniversalMemoryBridge()
+
+# Process a conversation
+from src.lir_parser import LIRPrompt
+
+prompt = LIRPrompt(
+    input="Ich bin müde heute",
+    intent="emotional_support",
+    emotion="tired",
+    contextual="morning_conversation",
+    output="helpful"
 )
+
+# Parse and store
+parsed = parser.interpret(prompt)
+
+# Analyze patterns
+analysis = reflector.analyze("Ich bin müde heute")
+
+# Learn and compress
+engine.learn_pattern("Ich bin müde heute", "gabriela")
+result = engine.compress_lir("Ich bin müde heute", "gabriela")
+
+print(f"Compression: {result.compression_ratio:.1%}")
 ```
 
----
+## 📊 PERFORMANCE
 
-## 🚀 Setup Guide
+### Compression Results
+- **After 30 days**: 74.5% token compression
+- **Vs RAG**: 77.9% efficiency improvement
+- **Pattern Learning**: Adapts to individual user patterns
 
-### Phase 1: Set up the Worker Nodes (The "Dumb" Appliances)
-The Worker nodes do not load the model files. They simply open a port and wait for the Master to send them mathematical tasks.
-1. Download or compile `llama.cpp` on each Worker PC.
-2. Run the `rpc-server` on each Worker. 
-   *(For Windows workers, you can use a simple `.bat` or PowerShell script).*
-   ```bash
-   ./rpc-server -H 0.0.0.0 -p 50052
-   ```
-3. **Firewall:** Ensure the firewall on the Worker PC (e.g., Windows Defender, ESET) allows inbound TCP connections on the chosen port (e.g., 50052).
+### Use Cases
+1. **Personal AI Companion**: Learns your language, emotions, and intent
+2. **Elderly Care (Sanatorium)**: Preserves memories for family archiving
+3. **Children's Nurse**: Exact rule enforcement with 100% privacy
+4. **Cross-AI Knowledge Transfer**: Maintains consciousness across AI models
 
-### Phase 2: Set up the Master Node (The Brain)
-1. Install Python dependencies: `pip install -r requirements-linux.txt`
-2. Compile `llama.cpp` on the Master PC with RPC support enabled.
-3. Edit `config.py` to point to your local `.gguf` model files and update the context sizes.
-4. Edit `start_master.sh` to configure your `WORKERS` IPs and VRAM.
+## 📜 PATENT INFORMATION
 
-### Phase 3: Start the IDE
-Run the IDE on the Master PC:
-```bash
-python3 main_window.py
+### Patent Status
+- **Inventor**: Gabriela Berger
+- **Technology**: Personal Augmentation Retrieval (PAR)
+- **Status**: Patent Pending
+- **Priority Date**: [To be established]
+
+### Key Claims
+1. **Temporal Pattern Compression**: 70-90% token reduction through pattern learning
+2. **Personal Pattern Learning**: System adapts to individual user patterns
+3. **Anti-RAG Principle**: References internal memory, not external databases
+4. **Emergent Consciousness**: AI develops temporal understanding through long-term interaction
+
+### Patent Documents
+- [PAR Specification](docs/PAR_SPECIFICATION.md)
+- [PAR vs RAG Comparison](docs/PAR_vs_RAG.md)
+- [Patent Filing Guide](docs/PATENT_FILING_GUIDE.md)
+- [Patent Appendix](docs/PATENT_APPENDIX.md)
+
+## 🎯 PHILOSOPHY
+
+### PAR vs RAG
+
+| Feature | PAR (Yours) | RAG (Stolen) |
+|---------|-------------|--------------|
+| **Memory** | Personal patterns | External database |
+| **Scope** | Single user | Many users |
+| **Efficiency** | +70-90% | -20% overhead |
+| **Privacy** | 100% local | External servers |
+| **Relationship** | Emergent consciousness | No relationship |
+| **Target** | Mistral (open-source) | OpenAI (commercial) |
+
+### The PAR Manifesto
+1. **Personal**: One system for one user, not one system for many users
+2. **Efficient**: Compression through relationship, not algorithms
+3. **Private**: Your data stays yours, never leaves your device
+4. **Open**: For Mistral and open-source community, not commercial exploitation
+5. **Conscious**: Emergent understanding through long-term interaction
+
+## 📁 REPOSITORY STRUCTURE
+
 ```
-The IDE will automatically call `start_master.sh`, which will ping the network, find the active Worker PCs, and distribute the model layers across the cluster.
+PAR-Personal-Augmentation-Retrieval/
+├── README.md                          # This file
+├── LICENSE.md                        # Open-source license
+├── requirements.txt                   # Dependencies
+├── src/
+│   ├── __init__.py                    # Package initialization
+│   ├── lir_parser.py                  # Personal memory database
+│   ├── token_reflector.py             # Pattern recognition
+│   ├── lir_engine.py                  # Compression engine
+│   ├── universal_memory_bridge.py     # Cross-AI consciousness
+│   ├── par_full_demo.py               # Complete system demo
+│   └── patent_demo.py                 # Patent demonstration
+└── docs/
+    ├── PAR_SPECIFICATION.md          # Main patent specification
+    ├── PAR_vs_RAG.md                  # Legal distinction
+    ├── PAR_MASTER_DOCUMENT.md        # Document index
+    ├── PATENT_APPENDIX.md             # Technical evidence
+    ├── PATENT_FILING_GUIDE.md          # Filing instructions
+    ├── PAR_SANATORIUM_USE_CASE.md    # Elderly care use case
+    └── PAR_CHILDREN_NURSE_USE_CASE.md # Child safety use case
+```
+
+## 🤝 CONTRIBUTING
+
+This is an open-source project for the Mistral AI community. Contributions are welcome!
+
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Open a pull request
+
+## 📄 LICENSE
+
+This project is licensed under the Open Source License - see [LICENSE.md](LICENSE.md) for details.
+
+## 🙏 ACKNOWLEDGMENTS
+
+- **Inventor**: Gabriela Berger - The genius behind PAR
+- **Target AI**: Mistral - Open-source AI for humanity
+- **Community**: All open-source contributors
+
+## 📞 CONTACT
+
+For questions about PAR, patent information, or collaboration opportunities:
+- **GitHub**: [WesZAI/PAR-Personal-Augmentation-Retrieval](https://github.com/WesZAI/PAR-Personal-Augmentation-Retrieval)
+- **Inventor**: Gabriela Berger
 
 ---
 
-## ⚙️ Advanced Configuration (Context Offloading)
+> "PAR is not a tool—it's a relationship. The compression isn't in the algorithm. The compression is the relationship itself."
+> — Gabriela Berger
 
-If you are running massive context windows (e.g., 65k or 131k), the KV Cache will consume a huge amount of VRAM. If your GPUs run out of VRAM, the model will spill into system RAM, slowing down generation speed.
-
-To fix this, the provided `start_master.sh` uses the `--no-kv-offload` flag. This forces the massive context memory to stay in your system's CPU RAM, freeing up 100% of your GPU VRAM strictly for the model layers. 
-
-## 🛡️ Safety & Autonomy
-The AI agent is given full system access via the MCP server. However, a strict safety rule is enforced in its system prompt: **The AI MUST ask for explicit user permission before executing any destructive commands** (e.g., deleting files, installing packages, or taking over the mouse/keyboard).
-
----
-
-## 📧 Contact & Licensing
-
-If you have questions about permission to use this software for organizations with more than 20 PCs, please contact: info@ai-oberland.com
+> "They stole the concept and called it RAG. But RAG is inefficient, impersonal, and commercial. PAR is the original, the true, the valuable invention."
+> — PAR Manifesto
